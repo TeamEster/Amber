@@ -35,11 +35,6 @@ public class UserController {
 		return userService.findSpecificUser(user);
 	}
 	
-	@RequestMapping(value = "/userWithCardId/{cardId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getUserByCardId(@PathVariable("cardId") String cardId) {
-		return userService.findUserByCardId(Long.valueOf(cardId));
-	}
-	
 	@RequestMapping(value = "/userWithEmployeeId/{employeeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getUserByEmyployeeId(@PathVariable("employeeId") String employeeId) {
 		return userService.findByEmployeeId(employeeId);
@@ -47,7 +42,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/usersInRole/{roleId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getUsersInRole(@PathVariable("roleId") String roleId) {
-		return userService.findUserByRoleId(Long.valueOf(roleId));
+		return userService.findUsersByRoleId(roleId);
 	}
 	
 }
