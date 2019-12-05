@@ -2,7 +2,6 @@ package com.amplexor.amber.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,11 +23,11 @@ public class User {
 	
 	private String employeeId;
 	
-	@OneToOne(targetEntity = Card.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity = Card.class, cascade=CascadeType.ALL)
 	@JoinColumn(name = "cardId")
 	private Card card;
 	
-	@OneToOne(targetEntity = Role.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity = Role.class, cascade= CascadeType.ALL)
 	@JoinColumn(name = "roleId")
 	private Role role;
 	
