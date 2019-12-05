@@ -1,4 +1,4 @@
-package teamester.defakr.Amber;
+package com.amplexor.amber;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
