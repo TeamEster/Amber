@@ -4,25 +4,35 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+<<<<<<< HEAD
+=======
+import com.amplexor.amber.model.Card;
+import com.amplexor.amber.model.Role;
+import com.amplexor.amber.model.User;
+import com.amplexor.amber.repositories.UserRepository;
+
+>>>>>>> c4ed0dacaf3f116d57441fa6e307572079ff6a25
 @SpringBootApplication
 public class AmberApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext ctx = SpringApplication.run(AmberApplication.class, args);
 		
-//		User ponnda = new User("Karlo", "Pondeljak", "1", 123L, 1L);
-//		User ponnda2 = new User("Karlo", "Pondeljak", "2", 123L, 2L);
-//		User ponnda3 = new User("Karlo", "Pondeljak", "3", 123L, 3L);
-//		User ponnda4 = new User("Karlo", "Pondeljak", "4", 123L, 1L);
-//		User krisko = new User("Domagoj", "Krišković", "2", 223L, 1L);
-//		
-//		UserRepository userRepository = (UserRepository) ctx.getBean("userRepository");
-//		
-//		userRepository.save(ponnda);
-//		userRepository.save(ponnda2);
-//		userRepository.save(ponnda3);
-//		userRepository.save(ponnda4);
-//		userRepository.save(krisko);
+<<<<<<< HEAD
+		Role adminRole = new Role("admin", "administator role");
+		Role userRole = new Role("user", "user role");
+		
+		Card cardPonnda = new Card("FE:78:40:5C");
+		User ponnda = new User("Karlo", "Pondeljak", "123", cardPonnda, adminRole);
+		
+		Card cardKrisko = new Card("0B:C1:EA:28");
+		User krisko = new User("Domagoj", "Krišković", "456", cardKrisko, userRole);
+		
+		UserRepository userRepository = (UserRepository) ctx.getBean("userRepository");
+		
+		userRepository.save(ponnda);
+		userRepository.save(krisko);
+>>>>>>> c4ed0dacaf3f116d57441fa6e307572079ff6a25
 	}
 
 }
