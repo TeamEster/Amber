@@ -15,11 +15,10 @@ public class UserService {
 	private UserRepository userRepository;
 
 	public List<User> findAllUsers() {
-		return (List<User>) userRepository.findAll();
+		return userRepository.findAll();
 	}
 	
 	public List<User> findUserByFirstName(String firstName) {
-		
+		return userRepository.findByFirstName(firstName);
 	}
-	
 }

@@ -8,6 +8,8 @@ public class AmberApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AmberApplication.class, args);
+		
+		//User user1 = new User("Karlo", "Pondeljak", 123L, 1L);
 	}
 
 }
