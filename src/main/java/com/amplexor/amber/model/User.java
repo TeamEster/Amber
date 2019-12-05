@@ -1,9 +1,13 @@
 package com.amplexor.amber.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,18 +24,22 @@ public class User {
 	
 	private String employeeId;
 	
-	private Long cardId;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name = "cardId")
+	private Card card;
 	
-	private Long roleId;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@JoinColumn(name = "roleId")
+	private Role role;
 	
 	public User() {}
 
-	public User(String firstName, String lastName, String employeeId, Long cardId, Long roleId) {
+	public User(String firstName, String lastName, String employeeId, Card card, Role role) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.employeeId = employeeId;
-		this.cardId = cardId;
-		this.roleId = roleId;
+		this.card = card;
+		this.role = role;
 	}
 
 	public Long getId() {
@@ -58,19 +66,27 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public Long getCardId() {
-		return cardId;
+	public String getEmployeeId() {
+		return employeeId;
 	}
 
-	public void setCardId(Long cardId) {
-		this.cardId = cardId;
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
 	}
 
-	public Long getRoleId() {
-		return roleId;
+	public Card getCard() {
+		return card;
 	}
 
-	public void setRoleId(Long roleId) {
-		this.roleId = roleId;
+	public void setCard(Card card) {
+		this.card = card;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }
