@@ -73,4 +73,12 @@ public class User {
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
+
+	public String getEmployeeId() {
+		return employeeId;
+	}
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
 }

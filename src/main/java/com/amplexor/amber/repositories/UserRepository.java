@@ -20,4 +20,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	
 	public List<User> findByCardId(Long cardId);
 	
+	public List<User> findByEmployeeId(String employeeId);
+	
+	public List<User> findByFirstNameOrLastNameOrEmployeeId(String firstName, String lastName, String employeeId);
+	
 }
