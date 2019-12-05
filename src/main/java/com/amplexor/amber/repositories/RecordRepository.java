@@ -13,6 +13,6 @@ public interface RecordRepository extends CrudRepository<Record, Long> {
 	
 	public List<Record> findAll(); 
 
-	public List<Record> findAllByCard(Card card);
+	//public List<Record> findByCard(Card card);
 	
 }

@@ -12,6 +12,6 @@ public interface CardRepository extends CrudRepository<Card, Long> {
 	
 	public List<Card> findAll(); 
 
-	public List<Card> findByCardId(String cardId);
+	public Card findByCardId(String cardId);
 	
 }

@@ -12,7 +12,7 @@ public interface RoleRepository extends CrudRepository<Role, Long> {
 	
 	public List<Role> findAll(); 
 
-	public List<Role> findById(String roleId);
+	public Role findById(String roleId);
 	
 	
 }

@@ -18,7 +18,7 @@ public class Record {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne(targetEntity = Card.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity = Card.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cardId")
 	private Card card;
 	

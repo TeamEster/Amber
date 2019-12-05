@@ -16,7 +16,7 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Long id;
 	
 	private String firstName;
 	
@@ -24,11 +24,11 @@ public class User {
 	
 	private String employeeId;
 	
-	@OneToOne(targetEntity = Card.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity = Card.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "cardId")
 	private Card card;
 	
-	@OneToOne(targetEntity = Role.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity = Role.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "roleId")
 	private Role role;
 	
@@ -42,11 +42,11 @@ public class User {
 		this.role = role;
 	}
 
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
