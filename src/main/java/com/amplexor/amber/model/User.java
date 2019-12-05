@@ -24,11 +24,11 @@ public class User {
 	
 	private String employeeId;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity = Card.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "cardId")
 	private Card card;
 	
-	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToOne(targetEntity = Role.class, cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "roleId")
 	private Role role;
 	
