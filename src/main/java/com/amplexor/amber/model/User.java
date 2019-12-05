@@ -18,15 +18,18 @@ public class User {
 	
 	private String lastName;
 	
+	private String employeeId;
+	
 	private Long cardId;
 	
 	private Long roleId;
 	
 	public User() {}
 
-	public User(String firstName, String lastName, Long cardId, Long roleId) {
+	public User(String firstName, String lastName, String employeeId, Long cardId, Long roleId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.employeeId = employeeId;
 		this.cardId = cardId;
 		this.roleId = roleId;
 	}

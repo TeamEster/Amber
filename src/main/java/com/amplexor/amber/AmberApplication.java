@@ -13,8 +13,8 @@ public class AmberApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext ctx = SpringApplication.run(AmberApplication.class, args);
 		
-		User ponnda = new User("Karlo", "Pondeljak", 123L, 1L);
-		User krisko = new User("Domagoj", "Krišković", 123L, 1L);
+		User ponnda = new User("Karlo", "Pondeljak", "1", 123L, 1L);
+		User krisko = new User("Domagoj", "Krišković", "2", 223L, 1L);
 		
 		UserRepository userRepository = (UserRepository) ctx.getBean("userRepository");
 		
