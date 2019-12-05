@@ -14,5 +14,4 @@ public interface RoleRepository extends CrudRepository<Role, Long> {
 
 	public Role findById(String roleId);
 	
-	
 }

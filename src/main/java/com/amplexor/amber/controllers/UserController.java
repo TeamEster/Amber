@@ -24,7 +24,6 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getUsers() {
 		return userService.findAllUsers();
