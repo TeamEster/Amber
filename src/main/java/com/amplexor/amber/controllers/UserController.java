@@ -2,13 +2,19 @@ package com.amplexor.amber.controllers;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amplexor.amber.dto.UserDTO;
 import com.amplexor.amber.model.User;
 import com.amplexor.amber.services.UserService;
 
@@ -24,23 +30,69 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getUsers() {
-		return userService.findAllUsers();
+	public ResponseEntity<List<User>> getUsers() {
+		List<User> users = userService.findAllUsers();
+		
+		if (users != null) {
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public List<User> getSpecificUser(@RequestParam String username) {
-		return userService.findSpecificUser(username);
-	}
-	
-	@RequestMapping(value = "/userWithEmployeeId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public User getUserByEmyployeeId(@RequestParam String employeeId) {
-		return userService.findByEmployeeId(employeeId);
+	public ResponseEntity<User> getSpecificUser(@RequestParam @NotNull String username) {
+		User user = userService.findUserByUsername(username);
+		
+		if (user != null) {
+			return new ResponseEntity<>(user, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 	@RequestMapping(value = "/usersInRole", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getUsersInRole(@RequestParam String roleId) {
-		return userService.findUsersByRoleId(roleId);
+	public ResponseEntity<List<User>> getUsersInRole(@RequestParam String roleId) {
+		List<User> users = userService.findUsersByRoleId(roleId);
+		
+		if (users != null) {
+			return new ResponseEntity<>(users, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value = "/assignCard", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<User> assignCardToUser(@RequestBody UserDTO userData) {
+		User user = userService.assignCard(userData);
+		
+		if (user != null) {
+			return new ResponseEntity<>(user, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value = "/assignRole", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<User> assignRoleToUser(@RequestBody UserDTO userData) {
+		User user = userService.assignRole(userData);
+		
+		if (user != null) {
+			return new ResponseEntity<>(user, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value = "/insertUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<User> insertNewUser(@RequestBody UserDTO userData) {
+		User user = userService.insertNew(userData);
+		
+		if (user != null) {
+			return new ResponseEntity<>(user, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
 }
