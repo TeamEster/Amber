@@ -1,5 +1,7 @@
 package com.amplexor.amber.model;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,12 +24,12 @@ public class Record {
 	@JoinColumn(name = "cardId")
 	private Card card;
 	
-	private String timestamp;
+	private Date timestamp;
 	
 	//default constructor	
 	public Record () {}
 	
-	public Record (Card card, String timestamp) {
+	public Record (Card card, Date timestamp) {
 		this.card = card;
 		this.timestamp = timestamp;
 	}
@@ -48,11 +50,11 @@ public class Record {
 		this.card = card;
 	}
 
-	public String getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(String timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 	

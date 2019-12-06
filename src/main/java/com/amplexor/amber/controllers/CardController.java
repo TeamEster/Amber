@@ -1,7 +1,5 @@
 package com.amplexor.amber.controllers;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.amplexor.amber.services.CardService;
 import com.google.gson.JsonObject;
-import com.sun.istack.NotNull;
 
 @RestController
 @RequestMapping("/cards")
