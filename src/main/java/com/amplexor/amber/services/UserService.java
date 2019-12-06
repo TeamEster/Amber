@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.amplexor.amber.dto.UserDTO;
+import com.amplexor.amber.dto.users.UserDTO;
 import com.amplexor.amber.model.Card;
 import com.amplexor.amber.model.Role;
 import com.amplexor.amber.model.User;
