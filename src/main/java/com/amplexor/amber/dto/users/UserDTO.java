@@ -1,4 +1,4 @@
-package com.amplexor.amber.dto;
+package com.amplexor.amber.dto.users;
 
 public class UserDTO {
 	

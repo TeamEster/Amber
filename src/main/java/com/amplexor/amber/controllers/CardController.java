@@ -1,5 +1,7 @@
 package com.amplexor.amber.controllers;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amplexor.amber.dto.cards.CardValidationResponse;
 import com.amplexor.amber.model.Card;
 import com.amplexor.amber.services.CardService;
 
@@ -24,13 +27,23 @@ public class CardController {
 	private CardService cardService;
 	
 	@RequestMapping(value = "/validate", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<String> validateCard(@RequestParam("id") @NotNull String cardId) {
+	public ResponseEntity<CardValidationResponse> validateCard(@RequestParam("id") @NotNull String cardId) {
 		boolean valid = cardService.validateCard(cardId);
+		CardValidationResponse response = new CardValidationResponse();
 		if (valid) {
-			return new ResponseEntity<>(HttpStatus.OK); 
+			response.setResult("valid");
+			response.setStatus("200");
+			return new ResponseEntity<>(response, HttpStatus.OK); 
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			response.setResult("invalid");
+			response.setStatus("404");
+			return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<Card>> findAll() {
+		return new ResponseEntity<>(cardService.findAll(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/insert", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
