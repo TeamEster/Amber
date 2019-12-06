@@ -21,4 +21,12 @@ public class CardService {
 		}
 		return valid;
 	}
+	
+	public void insertNewCard(Card card) {
+		cardRepository.save(card);
+	}
+	
+	public void deleteCard(Card card) {
+		cardRepository.delete(cardRepository.findByCardId(card.getCardId()));
+	}
 }
