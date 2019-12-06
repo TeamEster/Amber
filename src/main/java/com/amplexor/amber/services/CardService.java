@@ -30,11 +30,15 @@ public class CardService {
 		return valid;
 	}
 	
+	public Card findCardbyId(String cardId) {
+		return cardRepository.findByCardId(cardId);
+	}
+	
 	public void insertNewCard(Card card) {
 		cardRepository.save(card);
 	}
 	
-	public void deleteCard(Card card) {
-		cardRepository.delete(cardRepository.findByCardId(card.getCardId()));
+	public void deleteCard(String cardId) {
+		cardRepository.delete(cardRepository.findByCardId(cardId));
 	}
 }

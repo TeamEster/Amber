@@ -12,10 +12,14 @@ import com.amplexor.amber.repositories.RoleRepository;
 public class RoleService {
 	
 	@Autowired
-	private RoleRepository repository;
+	private RoleRepository roleRepository;
 	
 	public List<Role> findAllRoles() {
-		return repository.findAll();
+		return roleRepository.findAll();
+	}
+	
+	public Role findByRoleId(String roleId) {
+		return roleRepository.findByRoleId(roleId);
 	}
 
 }
