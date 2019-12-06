@@ -34,7 +34,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/userWithEmployeeId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getUserByEmyployeeId(@RequestParam String employeeId) {
+	public User getUserByEmyployeeId(@RequestParam String employeeId) {
 		return userService.findByEmployeeId(employeeId);
 	}
 	

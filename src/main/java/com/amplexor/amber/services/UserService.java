@@ -23,11 +23,11 @@ public class UserService {
 		return userRepository.findByRoleId(roleId);
 	}
 	
-	public List<User> findUsersByCardId(String cardId) {
+	public User findUsersByCardId(String cardId) {
 		return userRepository.findByCardId(cardId);
 	}
 	
-	public List<User> findByEmployeeId(String id) {
+	public User findByEmployeeId(String id) {
 		return userRepository.findByEmployeeId(id);
 	}
 	
