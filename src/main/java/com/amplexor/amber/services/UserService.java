@@ -31,10 +31,10 @@ public class UserService {
 		return userRepository.findByEmployeeId(id);
 	}
 	
-	public List<User> findSpecificUser(User user) {
+	public List<User> findSpecificUser(String userName) {
 		List<User> result = Lists.newArrayList();
 		
-		result = userRepository.findByFirstNameOrLastNameOrEmployeeId(user.getFirstName(), user.getLastName(), user.getEmployeeId());
+		result = userRepository.findByUsername(userName);
 		
 		return result;
 	}
