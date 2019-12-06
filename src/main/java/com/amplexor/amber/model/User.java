@@ -1,53 +1,34 @@
 package com.amplexor.amber.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "users")
+@Document(collection = "user")
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private String id;
+	
+	private String employeeId;
+	
+	private String username;
 	
 	private String firstName;
 	
 	private String lastName;
 	
-	private String employeeId;
+	private String cardId;
 	
-	@OneToOne(targetEntity = Card.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "cardId")
-	private Card card;
-	
-	@OneToOne(targetEntity = Role.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "roleId")
-	private Role role;
+	private String roleId;
 	
 	public User() {}
 
-	public User(String firstName, String lastName, String employeeId, Card card, Role role) {
+	public User(String firstName, String lastName, String employeeId, String cardId, String roleId) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.employeeId = employeeId;
-		this.card = card;
-		this.role = role;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+		this.cardId = cardId;
+		this.roleId = roleId;
 	}
 
 	public String getFirstName() {
@@ -74,19 +55,36 @@ public class User {
 		this.employeeId = employeeId;
 	}
 
-	public Card getCard() {
-		return card;
+	public String getId() {
+		return id;
 	}
 
-	public void setCard(Card card) {
-		this.card = card;
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public Role getRole() {
-		return role;
+	public String getCardId() {
+		return cardId;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
 	}
+
+	public String getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(String roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 }

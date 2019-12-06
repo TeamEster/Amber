@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.amplexor.amber.model.Role;
 
 @Repository
-public interface RoleRepository extends CrudRepository<Role, Long> {
+public interface RoleRepository extends CrudRepository<Role, String> {
 	
 	public List<Role> findAll(); 
 
-	public Role findById(String roleId);
+	public Role findByRoleId(String roleId);
 	
 }

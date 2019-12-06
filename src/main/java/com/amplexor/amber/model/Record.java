@@ -1,61 +1,56 @@
 package com.amplexor.amber.model;
 
-import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "records")
+@Document(collection = "record")
 public class Record {
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private String id;
 	
-	@OneToOne(targetEntity = Card.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "cardId")
-	private Card card;
+	private String cardId;
 	
-	private Date timestamp;
+	private String timestamp;
 	
 	//default constructor	
 	public Record () {}
 	
-	public Record (Card card, Date timestamp) {
-		this.card = card;
+	public Record (String cardId, String timestamp) {
+		this.cardId = cardId;
 		this.timestamp = timestamp;
 	}
 
-	public Long getId() {
-		return id;
+	public String getCard() {
+		return cardId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCard(String cardId) {
+		this.cardId = cardId;
 	}
 
-	public Card getCard() {
-		return card;
-	}
-
-	public void setCard(Card card) {
-		this.card = card;
-	}
-
-	public Date getTimestamp() {
+	public String getTimestamp() {
 		return timestamp;
 	}
 
-	public void setTimestamp(Date timestamp) {
+	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCardId() {
+		return cardId;
+	}
+
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
 	}
 	
 }

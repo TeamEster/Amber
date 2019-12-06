@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amplexor.amber.model.User;
@@ -34,13 +34,13 @@ public class UserController {
 		return userService.findSpecificUser(user);
 	}
 	
-	@RequestMapping(value = "/userWithEmployeeId/{employeeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getUserByEmyployeeId(@PathVariable("employeeId") String employeeId) {
+	@RequestMapping(value = "/userWithEmployeeId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<User> getUserByEmyployeeId(@RequestParam String employeeId) {
 		return userService.findByEmployeeId(employeeId);
 	}
 	
-	@RequestMapping(value = "/usersInRole/{roleId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getUsersInRole(@PathVariable("roleId") String roleId) {
+	@RequestMapping(value = "/usersInRole", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<User> getUsersInRole(@RequestParam String roleId) {
 		return userService.findUsersByRoleId(roleId);
 	}
 	
