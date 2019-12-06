@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,8 +29,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public List<User> getSpecificUser(@RequestBody User user) {
-		return userService.findSpecificUser(user);
+	public List<User> getSpecificUser(@RequestParam String username) {
+		return userService.findSpecificUser(username);
 	}
 	
 	@RequestMapping(value = "/userWithEmployeeId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
