@@ -25,13 +25,22 @@ public class RecordService {
 		return repository.findAll();
 	}
 	
-	public List<Record> findByUser(User user) {
-		return findByCardId(user.getCardId());
+	public List<Record> findByUser(String employeeId) {
+		User user = userService.findByEmployeeId(employeeId);
+		if (user != null) {
+			return findByCardId(user.getCardId());
+		}
+		
+		return null;
 	}
 	
 	public List<Record> findByUserForPeriod(String employeeId, String from, String to) {
 		User user = userService.findByEmployeeId(employeeId);
-		return findByCardIdForPeriod(user.getCardId(), from, to);
+		if (user != null) {
+			return findByCardIdForPeriod(user.getCardId(), from, to);
+		}
+		
+		return null;
 	}
 	
 	public List<Record> findByCardId(String cardId) {

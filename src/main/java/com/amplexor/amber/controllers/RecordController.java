@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amplexor.amber.model.Record;
-import com.amplexor.amber.model.User;
 import com.amplexor.amber.services.RecordService;
-import com.amplexor.amber.services.UserService;
 
 @RestController
 @RequestMapping("/records")
@@ -26,9 +24,6 @@ public class RecordController {
 	
 	@Autowired
 	private RecordService recordService;
-	
-	@Autowired
-	private UserService userService;
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Record>> findAll() {
@@ -38,8 +33,7 @@ public class RecordController {
 	
 	@RequestMapping(value = "/user/{employeeId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Record>> findForUser(@PathVariable("employeeId") String employeeId) {
-		User user = userService.findByEmployeeId(employeeId);
-		List<Record> records = recordService.findByUser(user);
+		List<Record> records = recordService.findByUser(employeeId);
 		return new ResponseEntity<>(records, HttpStatus.OK);
 	}
 	
