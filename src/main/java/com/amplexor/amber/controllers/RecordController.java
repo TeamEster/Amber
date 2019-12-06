@@ -3,11 +3,13 @@ package com.amplexor.amber.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amplexor.amber.model.Record;
 import com.amplexor.amber.services.RecordService;
 
 @RestController
@@ -41,9 +43,11 @@ public class RecordController {
 		return null;
 	}
 	
-	@RequestMapping(value = "/{cardId}?from&to", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String findForCardAndPeriod(@PathVariable("cardId") String cardId, @RequestParam String from, @RequestParam String to) {
+	@RequestMapping(value = "/insert", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String insertNewRecord(@RequestBody Record record) {
 		
 		return null;
 	}
+	
+	
 }

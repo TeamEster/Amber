@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.amplexor.amber.model.Card;
 import com.amplexor.amber.model.Record;
 import com.amplexor.amber.repositories.RecordRepository;
 
@@ -39,5 +40,9 @@ public class RecordService {
 		
 		return null;
 	}
-	
+
+	public boolean insertNewRecord(Record record) {
+		repository.insert(record);
+		return true;
+	}
 }
