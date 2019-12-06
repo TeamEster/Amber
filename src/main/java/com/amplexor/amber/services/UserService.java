@@ -25,7 +25,7 @@ public class UserService {
 	RoleService roleService;
 	
 	public List<User> findAllUsers() {
-		return userRepository.findAll();
+		return userRepository.findAll(); 
 	}
 	
 	public List<User> findUsersByRoleId(String roleId) {

@@ -1,5 +1,7 @@
 package com.amplexor.amber.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,10 @@ public class CardService {
 	@Autowired
 	private UserService userService;
 
+	public List<Card> findAll() {
+		return cardRepository.findAll();
+	}
+	
 	public Boolean validateCard(String cardId) {
 		
 		boolean valid = false;
