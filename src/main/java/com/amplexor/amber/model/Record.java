@@ -1,51 +1,32 @@
 package com.amplexor.amber.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "records")
+@Document(collection = "record")
 public class Record {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
 	
-	@OneToOne(targetEntity = Card.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "cardId")
-	private Card card;
+	@Id
+	private String id;
+	
+	private String cardId;
 	
 	private String timestamp;
 	
 	//default constructor	
 	public Record () {}
 	
-	public Record (Card card, String timestamp) {
-		this.card = card;
+	public Record (String cardId, String timestamp) {
+		this.cardId = cardId;
 		this.timestamp = timestamp;
 	}
 
-	public Long getId() {
-		return id;
+	public String getCard() {
+		return cardId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Card getCard() {
-		return card;
-	}
-
-	public void setCard(Card card) {
-		this.card = card;
+	public void setCard(String cardId) {
+		this.cardId = cardId;
 	}
 
 	public String getTimestamp() {
@@ -54,6 +35,22 @@ public class Record {
 
 	public void setTimestamp(String timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCardId() {
+		return cardId;
+	}
+
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
 	}
 	
 }

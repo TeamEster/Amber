@@ -1,29 +1,27 @@
 package com.amplexor.amber.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "card")
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "card")
 public class Card {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private String id;
 	
 	private String cardId;
+	
+	private String cardType;
 	
 	//default constructor			
 	public Card() {}
 	
-	public Card(String cardId) {
+	public Card(String cardId, String cardType) {
 		this.cardId = cardId;
+		this.cardType = cardType;
 	}
 	
-	@Id
 	public String getCardId() {
 		return this.cardId;
 	}
@@ -31,4 +29,21 @@ public class Card {
 	public void setCardId(String cardId) {
 		this.cardId = cardId;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
+	}
+	
 }
