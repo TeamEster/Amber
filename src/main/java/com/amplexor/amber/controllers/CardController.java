@@ -3,10 +3,12 @@ package com.amplexor.amber.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amplexor.amber.model.Card;
 import com.amplexor.amber.services.CardService;
 import com.google.gson.JsonObject;
 
@@ -24,4 +26,15 @@ public class CardController {
 		
 		return jsonObject.toString();
 	}
+	
+	@RequestMapping(value = "/insert", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void insertNewCard(@RequestBody Card card) {
+		cardService.insertNewCard(card);
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public void deleteCard(@RequestBody Card card) {
+		cardService.deleteCard(card);
+	}
+	
 }
