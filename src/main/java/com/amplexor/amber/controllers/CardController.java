@@ -33,12 +33,11 @@ public class CardController {
 		if (valid) {
 			response.setResult("valid");
 			response.setStatus("200");
-			return new ResponseEntity<>(response, HttpStatus.OK); 
 		} else {
 			response.setResult("invalid");
 			response.setStatus("404");
-			return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
 		}
+		return new ResponseEntity<>(response, HttpStatus.OK); 
 	}
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
