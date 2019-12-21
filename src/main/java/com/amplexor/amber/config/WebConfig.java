@@ -10,14 +10,11 @@ public class WebConfig implements WebMvcConfigurer {
 	
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		//registry.addViewController("/login").setViewName("templates/login");
+		//TODO
 	}
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/libs/**").addResourceLocations("/libs/");
-//		registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-//		registry.addResourceHandler("/images/**").addResourceLocations("/images/");
-//		registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+		//TODO
 	}
 }
